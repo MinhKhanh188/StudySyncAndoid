@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Facebook-like color palette -->
+    <color name="fb_dark_blue">#3B5999</color>
+    <color name="fb_dark_blue2">#4E68A1</color>
+    <color name="fb_medium_blue">#8b9dc3</color>
+    <color name="fb_sady_gray">#C3C3C3</color>
+    <color name="fb_light_gray">#E9E9E9</color>
+    <color name="fb_very_light_gray">#f7f7f7</color>
+    <color name="fb_white">#ffffff</color>
+
+    <!-- Instagram-like color palette -->
+
+    <!-- Instagram background color palette -->
+    <color name="ins_background1">#8355BA</color>
+    <color name="ins_background2">#A64888</color>
+    <color name="ins_background3">#E04179</color>
+
+
+
+
 </resources>

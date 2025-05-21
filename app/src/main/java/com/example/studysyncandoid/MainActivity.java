@@ -31,37 +31,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       // setContentView(R.layout.activity_main);
+        setContentView(R.layout.facebook_login);
 
-        // Bind views
-        editTextTask = findViewById(R.id.editTextTask);
-        buttonAdd = findViewById(R.id.buttonAdd);
-        recyclerViewTasks = findViewById(R.id.recyclerViewTasks);
-
-        // Setup database
-        db = TaskDatabase.getInstance(this);
-        taskList = db.taskDao().getAllTasks();
-
-        // Setup RecyclerView
-        adapter = new TaskAdapter(this, taskList, db);
-        recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewTasks.setAdapter(adapter);
-
-        // Add new task
-        buttonAdd.setOnClickListener(v -> {
-            String title = editTextTask.getText().toString().trim();
-            if (!title.isEmpty()) {
-                Task newTask = new Task();
-                newTask.title = title;
-                newTask.isDone = false;
-
-                db.taskDao().insert(newTask);
-                taskList.clear();
-                taskList.addAll(db.taskDao().getAllTasks());
-                adapter.notifyDataSetChanged();
-
-                editTextTask.setText(""); // clear input
-            }
-        });
+//        // Bind views
+//        editTextTask = findViewById(R.id.editTextTask);
+//        buttonAdd = findViewById(R.id.buttonAdd);
+//        recyclerViewTasks = findViewById(R.id.recyclerViewTasks);
+//
+//        // Setup database
+//        db = TaskDatabase.getInstance(this);
+//        taskList = db.taskDao().getAllTasks();
+//
+//        // Setup RecyclerView
+//        adapter = new TaskAdapter(this, taskList, db);
+//        recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerViewTasks.setAdapter(adapter);
+//
+//        // Add new task
+//        buttonAdd.setOnClickListener(v -> {
+//            String title = editTextTask.getText().toString().trim();
+//            if (!title.isEmpty()) {
+//                Task newTask = new Task();
+//                newTask.title = title;
+//                newTask.isDone = false;
+//
+//                db.taskDao().insert(newTask);
+//                taskList.clear();
+//                taskList.addAll(db.taskDao().getAllTasks());
+//                adapter.notifyDataSetChanged();
+//
+//                editTextTask.setText(""); // clear input
+//            }
+//        });
     }
 }
