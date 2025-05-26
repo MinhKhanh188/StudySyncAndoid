@@ -3,6 +3,7 @@ package com.example.studysyncandoid;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,11 +29,30 @@ public class MainActivity extends AppCompatActivity {
     List<Task> taskList;
     TaskAdapter adapter;
 
+    EditText usernameInput, passwordInput;
+    Button loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_main);
         setContentView(R.layout.facebook_login);
+
+        usernameInput = findViewById(R.id.editText);      // Email or phone
+        passwordInput = findViewById(R.id.editText2);      // Password
+        loginButton = findViewById(R.id.button);           // Login button
+
+        loginButton.setOnClickListener(v -> {
+            String username = usernameInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
+
+            if (username.equals("admin") && password.equals("123456")) {
+                Toast.makeText(MainActivity.this, "Login successful 💙", Toast.LENGTH_SHORT).show();
+                // Redirect to another activity if needed
+            } else {
+                Toast.makeText(MainActivity.this, "Invalid credentials ❌", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        // Bind views
 //        editTextTask = findViewById(R.id.editTextTask);

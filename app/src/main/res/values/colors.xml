@@ -19,6 +19,11 @@
     <color name="ins_background2">#A64888</color>
     <color name="ins_background3">#E04179</color>
 
+    <color name="ins_color1">#C4106E</color>
+    <color name="ins_color2">#B11E8A</color>
+
+    <color name="ins_buttonColor1">#00B11E8A</color>
+    <color name="ins_text_color_at_login_button">#B1ABAB</color>
 
 
 

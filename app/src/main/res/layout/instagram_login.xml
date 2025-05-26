@@ -5,26 +5,171 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/fb_dark_blue"
+    android:background="@drawable/instagram_background"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="128dp"
-            android:background="@drawable/rounded_white_bg"
-            android:src="@drawable/facebook_icon"
+            android:id="@+id/imageViewInstagram_logo"
+            android:layout_width="227dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="124dp"
+            android:src="@drawable/instagram_logo"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/fb_dark_blue" />
+            app:tint="@color/white" />
 
+        <EditText
+            android:id="@+id/editText3"
+            style="@style/LoginEditText"
+            android:layout_width="0dp"
+            android:layout_marginTop="48dp"
+            android:hint="Username"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewInstagram_logo" />
+
+        <EditText
+            android:id="@+id/editText4"
+            style="@style/LoginPasswordEditText"
+            android:layout_width="0dp"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            app:layout_constraintTop_toBottomOf="@+id/editText3"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            style="@style/LoginButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="LOG IN"
+            app:layout_constraintTop_toBottomOf="@+id/editText4"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/LoginHintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="16dp"
+            android:text="Forgot login details?"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <TextView
+            style="@style/LoginBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Get help signing in."
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <!-- Rest remains unchanged... -->
+
+
+        <LinearLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#4DFFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="OR"
+                android:textColor="#99FFFFFF"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#4DFFFFFF" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+            tools:layout_editor_absoluteX="0dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:background="@drawable/rounded_white_bg"
+                android:src="@drawable/facebook_icon"
+                app:tint="@color/ins_background3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Login with Facebook"
+                android:textColor="#FFFFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#33FFFFFF"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <LinearLayout
+            android:id="@+id/button_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#DFFFFFF"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account?"
+                android:textColor="#99FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Sign Up"
+                android:textColor="#CCFFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -40,11 +185,5 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="33dp" />
 
-
-
-        <!-- Add your UI elements here -->
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>
