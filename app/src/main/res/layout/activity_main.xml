@@ -1,28 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFF">
 
-    <EditText
-        android:id="@+id/editTextTask"
+    <TextView
+        android:id="@+id/debugTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter new task" />
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" />
 
     <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Task" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewTasks"
+        android:id="@+id/buttonInstagramLogin"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="8dp"/>
+        android:layout_height="wrap_content"
+        android:text="Login with Instagram"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#E1306C"
+        android:textColor="#FFF" />
+
+    <Button
+        android:id="@+id/buttonFacebookLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login with Facebook"
+        android:backgroundTint="#3b5998"
+        android:textColor="#FFF" />
 </LinearLayout>
