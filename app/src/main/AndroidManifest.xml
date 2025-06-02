@@ -16,6 +16,10 @@
         <activity android:name=".InstagramLoginActivity" />
         <activity android:name=".FacebookLoginActivity" />
 
+        <!-- 🆕 Add these -->
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

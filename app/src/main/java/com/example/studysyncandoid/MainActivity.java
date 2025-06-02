@@ -30,20 +30,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonInstagramLogin = findViewById(R.id.buttonInstagramLogin);
-        buttonFacebookLogin = findViewById(R.id.buttonFacebookLogin);
-        debugTextView = findViewById(R.id.debugTextView);
-
-        buttonInstagramLogin.setOnClickListener(v -> {
-            debugTextView.setText("Instagram button clicked 💜");
-            Intent intent = new Intent(MainActivity.this, InstagramLoginActivity.class);
-            startActivity(intent);
-        });
-
-        buttonFacebookLogin.setOnClickListener(v -> {
-            debugTextView.setText("Facebook button clicked 💙");
-            Intent intent = new Intent(MainActivity.this, FacebookLoginActivity.class);
-            startActivity(intent);
-        });
+        // Immediately start LoginActivity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish(); // Close MainActivity so user can't return to it
     }
+
 }
