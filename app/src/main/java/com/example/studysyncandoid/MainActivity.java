@@ -1,5 +1,6 @@
 package com.example.studysyncandoid;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,49 +12,47 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     EditText usernameEditText, passwordEditText;
-    Button saveButton;
+    Button loginButton;
     SharedPreferences prefs;
     public static final String PREFS_NAME = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // ✅ If already logged in, go to HomeActivity
+        if (prefs.getBoolean("isLoggedIn", false)) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish(); // Prevent returning to login
+            return;
+        }
+
+        // ⬇️ Continue to Login screen if not logged in
         setContentView(R.layout.activity_main);
 
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-        saveButton = findViewById(R.id.saveButton);
+        loginButton = findViewById(R.id.saveButton);
 
-        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        loginButton.setOnClickListener(v -> {
+            String username = usernameEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
 
-        // Load previously saved data
-        loadSavedData();
+            // 🔐 Hardcoded check
+            if (username.equals("admin") && password.equals("123456")) {
+                prefs.edit()
+                        .putBoolean("isLoggedIn", true)
+                        .putString("username", username)
+                        .apply();
 
-        saveButton.setOnClickListener(v -> {
-            String username = usernameEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-
-            // Save to SharedPreferences
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("username", username);
-            editor.putString("password", password); // Note: don't store real passwords like this!
-            editor.putBoolean("isLoggedIn", true);
-            editor.apply();
-
-            Toast.makeText(this, "Login info saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+            }
         });
-    }
-
-    private void loadSavedData() {
-        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
-        if (isLoggedIn) {
-            String savedUser = prefs.getString("username", "");
-            String savedPass = prefs.getString("password", "");
-
-            usernameEditText.setText(savedUser);
-            passwordEditText.setText(savedPass);
-
-            Toast.makeText(this, "Welcome back, " + savedUser, Toast.LENGTH_SHORT).show();
-        }
     }
 }
