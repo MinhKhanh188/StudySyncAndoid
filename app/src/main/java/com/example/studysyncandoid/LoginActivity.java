@@ -36,3 +36,4 @@ public class LoginActivity extends AppCompatActivity {
         nameField.setText(""); // clear field when returning after minimize
     }
 }
+

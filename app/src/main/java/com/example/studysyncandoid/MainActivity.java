@@ -1,39 +1,59 @@
 package com.example.studysyncandoid;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.studysyncandoid.adapter.TaskAdapter;
-import com.example.studysyncandoid.data.TaskDatabase;
-import com.example.studysyncandoid.model.Task;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button buttonInstagramLogin, buttonFacebookLogin;
-    TextView debugTextView;  // add this
+
+    EditText usernameEditText, passwordEditText;
+    Button saveButton;
+    SharedPreferences prefs;
+    public static final String PREFS_NAME = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Immediately start LoginActivity
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish(); // Close MainActivity so user can't return to it
+        usernameEditText = findViewById(R.id.usernameEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
+        saveButton = findViewById(R.id.saveButton);
+
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // Load previously saved data
+        loadSavedData();
+
+        saveButton.setOnClickListener(v -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
+
+            // Save to SharedPreferences
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("username", username);
+            editor.putString("password", password); // Note: don't store real passwords like this!
+            editor.putBoolean("isLoggedIn", true);
+            editor.apply();
+
+            Toast.makeText(this, "Login info saved!", Toast.LENGTH_SHORT).show();
+        });
     }
 
+    private void loadSavedData() {
+        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+        if (isLoggedIn) {
+            String savedUser = prefs.getString("username", "");
+            String savedPass = prefs.getString("password", "");
+
+            usernameEditText.setText(savedUser);
+            passwordEditText.setText(savedPass);
+
+            Toast.makeText(this, "Welcome back, " + savedUser, Toast.LENGTH_SHORT).show();
+        }
+    }
 }

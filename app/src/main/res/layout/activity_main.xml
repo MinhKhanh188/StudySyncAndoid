@@ -1,36 +1,28 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FFF">
+    android:padding="24dp">
 
-    <TextView
-        android:id="@+id/debugTextView"
+    <EditText
+        android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center" />
+        android:hint="Enter Username"/>
 
-    <Button
-        android:id="@+id/buttonInstagramLogin"
+    <EditText
+        android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login with Instagram"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#E1306C"
-        android:textColor="#FFF" />
+        android:hint="Enter Password"
+        android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/buttonFacebookLogin"
+        android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login with Facebook"
-        android:backgroundTint="#3b5998"
-        android:textColor="#FFF" />
+        android:text="Save  Login"
+        android:layout_marginTop="16dp"/>
+
 </LinearLayout>
